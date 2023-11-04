@@ -1,11 +1,29 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import MainLayout from "@/components/layouts/MainLayout";
 
-const inter = Inter({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <main
+    <>
+      <h2 className="text-2xl">Welcome to my page</h2>
+    </>
+  );
+}
+
+HomePage.getLayout = function getLayout(page) {
+  return <MainLayout>{page}</MainLayout>;
+};
+
+/* 
+HomePage.getLayout = function getLayout(page) {
+  return <RootLayout>{page}</RootLayout>;
+};
+*/
+
+/* 
+<main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
     >
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
@@ -114,5 +132,4 @@ export default function Home() {
         </a>
       </div>
     </main>
-  )
-}
+*/
