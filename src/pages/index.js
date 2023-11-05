@@ -7,11 +7,85 @@ import { useGetDataQuery } from "@/redux/api/api";
 
 export default function HomePage() {
   const { data, isLoading, isError, error } = useGetDataQuery();
-  console.log(data?.processor[0]);
+
+  const randomIndex = Math.floor(Math.random() * data?.ram.length);
+  const randomRam = data?.ram?.[randomIndex];
+  const randomProcessor = data?.processor?.[randomIndex];
+  const randomMotherboard = data?.motherboard?.[randomIndex];
+  const randomPowerSupply = data?.powerSupply?.[randomIndex];
+  const randomMonitor = data?.monitor?.[randomIndex];
+  const randomOthers = data?.others?.[randomIndex];
 
   return (
     <>
       <h2 className="text-2xl">Welcome to my page</h2>
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-2">
+        <div className="w-80 m-8 border-double border-4 border-sky-500 p-4">
+          <h3>{randomRam?.name}</h3>
+          <p>{randomRam?.price}</p>
+          <Image
+            src={randomRam?.image}
+            alt={randomRam?.name}
+            width={250}
+            height={250}
+          />
+        </div>
+
+        <div className="w-80 m-8 border-double border-4 border-sky-500 p-4">
+          <h3>{randomMonitor?.name}</h3>
+          <p>{randomMonitor?.price}</p>
+          <Image
+            src={randomMonitor?.image}
+            alt={randomMonitor?.name}
+            width={250}
+            height={250}
+          />
+        </div>
+
+        <div className="w-80 m-8 border-double border-4 border-sky-500 p-4">
+          <h3>{randomPowerSupply?.name}</h3>
+          <p>{randomPowerSupply?.price}</p>
+          <Image
+            src={randomPowerSupply?.image}
+            alt={randomPowerSupply?.name}
+            width={250}
+            height={250}
+          />
+        </div>
+
+        <div className="w-80 m-8 border-double border-4 border-sky-500 p-4">
+          <h3>{randomMotherboard?.name}</h3>
+          <p>{randomMotherboard?.price}</p>
+          <Image
+            src={randomMotherboard?.image}
+            alt={randomMotherboard?.name}
+            width={250}
+            height={250}
+          />
+        </div>
+
+        <div className="w-80 m-8 border-double border-4 border-sky-500 p-4">
+          <h3>{randomProcessor?.name}</h3>
+          <p>{randomProcessor?.price}</p>
+          <Image
+            src={randomProcessor?.image}
+            alt={randomProcessor?.name}
+            width={250}
+            height={250}
+          />
+        </div>
+
+        <div className="w-80 m-8 border-double border-4 border-sky-500 p-4">
+          <h3>{randomOthers?.name}</h3>
+          <p>{randomOthers?.price}</p>
+          <Image
+            src={randomOthers?.image}
+            alt={randomOthers?.name}
+            width={250}
+            height={250}
+          />
+        </div>
+      </div>
     </>
   );
 }

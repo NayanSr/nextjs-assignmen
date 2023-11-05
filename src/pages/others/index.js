@@ -3,23 +3,24 @@ import { useGetDataQuery } from "@/redux/api/api";
 import Image from "next/image";
 import React from "react";
 
-export default function CpuPage() {
+export default function Others() {
   const { data } = useGetDataQuery();
-  const cpus = data?.processor;
+  const others = data?.others;
+
   return (
     <div className="flex flex-wrap">
-      {cpus?.map((cpu) => (
+      {others?.map((item) => (
         <div
           className="bg-slate-300 rounded-md w-[350px] m-5 p-5"
-          key={cpu.name}
+          key={item.name}
         >
-          <h3 className="text-xl">{cpu.name}</h3>
-          <p>{cpu.price}</p>
+          <h3 className="text-xl">{item.name}</h3>
+          <p>{item.price}</p>
 
           <Image
             className="mx-auto"
-            src={cpu?.image}
-            alt={cpu?.name}
+            src={item?.image}
+            alt={item?.name}
             width={350}
             height={350}
           />
@@ -29,6 +30,6 @@ export default function CpuPage() {
   );
 }
 
-CpuPage.getLayout = function getLayout(page) {
+Others.getLayout = function getLayout(page) {
   return <MainLayout>{page}</MainLayout>;
 };
