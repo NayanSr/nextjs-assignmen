@@ -1,10 +1,14 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import MainLayout from "@/components/layouts/MainLayout";
+import { useGetDataQuery } from "@/redux/api/api";
 
 // const inter = Inter({ subsets: ["latin"] });
 
 export default function HomePage() {
+  const { data, isLoading, isError, error } = useGetDataQuery();
+  console.log(data?.processor[0]);
+
   return (
     <>
       <h2 className="text-2xl">Welcome to my page</h2>
