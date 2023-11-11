@@ -7,14 +7,16 @@ import { useGetDataQuery } from "@/redux/api/api";
 
 export default function HomePage() {
   const { data, isLoading, isError, error } = useGetDataQuery();
+  const products = data?.data[0].data;
+  console.log(products);
 
-  const randomIndex = Math.floor(Math.random() * data?.ram.length);
-  const randomRam = data?.ram?.[randomIndex];
-  const randomProcessor = data?.processor?.[randomIndex];
-  const randomMotherboard = data?.motherboard?.[randomIndex];
-  const randomPowerSupply = data?.powerSupply?.[randomIndex];
-  const randomMonitor = data?.monitor?.[randomIndex];
-  const randomOthers = data?.others?.[randomIndex];
+  const randomIndex = Math.floor(Math.random() * products?.ram.length);
+  const randomRam = products?.ram?.[randomIndex];
+  const randomProcessor = products?.processor?.[randomIndex];
+  const randomMotherboard = products?.motherboard?.[randomIndex];
+  const randomPowerSupply = products?.powerSupply?.[randomIndex];
+  const randomMonitor = products?.monitor?.[randomIndex];
+  const randomOthers = products?.others?.[randomIndex];
 
   return (
     <>
@@ -32,6 +34,7 @@ export default function HomePage() {
         </div>
 
         <div className="w-80 m-8 border-double border-4 border-sky-500 p-4">
+          <h3>Processor</h3>
           <h3>{randomMonitor?.name}</h3>
           <p>{randomMonitor?.price}</p>
           <Image

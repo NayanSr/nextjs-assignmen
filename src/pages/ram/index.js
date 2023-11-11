@@ -5,22 +5,22 @@ import React from "react";
 
 export default function RamPage() {
   const { data } = useGetDataQuery();
-  const rams = data?.ram;
+  const rams = data?.data[0].data.ram;
 
   return (
     <div className="flex flex-wrap">
-      {rams?.map((item) => (
+      {rams?.map((ram) => (
         <div
-          className="bg-slate-300 rounded-md w-[350px] m-5 p-5"
-          key={item.name}
+          className="bg-slate-300 rounded-md w-[350px] h-[500px] m-5 p-5  relative"
+          key={ram.name}
         >
-          <h3 className="text-xl">{item.name}</h3>
-          <p>{item.price}</p>
+          <h3 className="text-xl">{ram.name}</h3>
+          <p>{ram.price}</p>
 
           <Image
-            className="mx-auto"
-            src={item?.image}
-            alt={item?.name}
+            className="mx-auto absolute bottom-0 left-0"
+            src={ram?.image}
+            alt={ram?.image}
             width={350}
             height={350}
           />

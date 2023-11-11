@@ -19,6 +19,7 @@
 body {
   color: rgb(var(--foreground-rgb));
   background-color: rgb(86, 93, 99);
+  /* background-color: rgba(3, 221, 250, 0.678); */
   padding: 0 25px;
   box-sizing: border-box;
   color: black;
